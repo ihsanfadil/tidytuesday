@@ -13,8 +13,34 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 ## Preface
 
-```{r packages}
+The `palmerpenguins` package is aimed at providing an alternative to the well-known `iris` dataset, which is commonly used for an introduction to data exploration and visualisation. A more detailed documentation of the package can be found [here](https://allisonhorst.github.io/palmerpenguins/).
+
+Personally, I wanted to familiarise myself with this dataset as well for future use in lectures on data visualisation with R. And much more importantly, penguins are so adorable! &#x1f427;
+
+Now, let's get started.
+
+```{r get-started}
+# Setup
 library(tidytuesdayR) # Dataset
 library(tidyverse)    # Data wrangling, visualisation
 ```
+
+## Dataset
+
+```{r dataset}
+# Dataset
+tidytuesday <- tt_load(2020, week = 31) # Read in the raw and cleaned datasets
+penguins <- tidytuesday$penguins
+```
+
+
+
+
+
+
+
+
+
+
+
 
