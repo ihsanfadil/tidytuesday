@@ -1,0 +1,20 @@
+---
+title: "Palmer Penguins"
+author: ""
+date: ""
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+![palmer penguins](palmer-penguins.png)
+
+## Preface
+
+```{r packages}
+library(tidytuesdayR) # Dataset
+library(tidyverse)    # Data wrangling, visualisation
+```
+
