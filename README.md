@@ -1,2 +1,1 @@
-# tidytuesday
-#TidyTuesday project
+# #TidyTuesday
