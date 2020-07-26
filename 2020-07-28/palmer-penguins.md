@@ -11,15 +11,15 @@ data exploration and visualisation. A more detailed documentation of the
 package can be found
 [here](https://allisonhorst.github.io/palmerpenguins/).
 
-I personally wanted to familiarise myself with this dataset as well for
-future use in lectures on data visualisation with R. And much more
-importantly, penguins are so adorable\! 🐧
+I wanted to familiarise myself with this dataset as well for future use
+in lectures on data visualisation with R. And much more importantly,
+penguins are so adorable\! 🐧
 
 Now, let’s get started.
 
 ``` r
 # Setup
-library(tidytuesdayR) # Dataset
+library(tidytuesdayR) # Data sources
 library(tidyverse)    # Data wrangling, visualisation
 ```
 
