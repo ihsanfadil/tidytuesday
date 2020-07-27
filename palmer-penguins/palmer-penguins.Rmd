@@ -31,6 +31,7 @@ Let's get started.
 ```{r getting-started}
 # Setup
 library(palmerpenguins) # Data source
+library(ggbeeswarm)     # Beeswarm plots
 library(tidyverse)      # Data wrangling, visualisation
 library(ggExtra)        # Marginal plots
 ```
@@ -43,10 +44,11 @@ The authors provide two datasets. I am using the simplified version of the raw d
 # Dataset
 penguins <- penguins %>%               # Read in the data
   na.omit() %>%                        # Complete-case analysis
-  mutate(species = as_factor(species), # Coerce relevant variables to factors
+  mutate(species = as_factor(species), # Modify variables
          island = as_factor(island),
          sex = as_factor(sex),
-         year = as_factor(year))
+         year = as_factor(year),
+         sex = fct_recode(sex, "Male" = "male", "Female" = "female"))
 ```
 
 ![culmen depth](culmen_depth.png)
@@ -66,15 +68,16 @@ First off, I am going to reproduce the first plot shown on the `palmerpenguins` 
 # Set plots to some formatting
 
 ## Colours and theme of my choosing
-colours <- c("Gentoo" = "#50A3A4", "Chinstrap" = "#F95335", "Adelie" = "#FCAF38")
+colours_penguins <- c("Gentoo" = "#50A3A4", "Chinstrap" = "#F95335", "Adelie" = "#FCAF38")
+colours_sex <- c("Male" = "#50A3A4", "Female" = "#FCAF38")
 theme_set(theme_minimal())
 
-## Further tweaks
+## Further refinement
 theme_update(
   plot.title = element_text(hjust = 0.5),    # Centre-align title
   plot.subtitle = element_text(hjust = 0.5), # Centre-align subtitle
   legend.title = element_blank(),            # Remove legend title
-  legend.position = c(0.82, 0.2),            # Move legend to bottom right
+  legend.position = c(0.15, 0.82),           # Move legend to bottom right
   legend.background = element_blank(),       # Remove legend background
   legend.box.background = element_blank(),   # Remove lengend-box background
   legend.spacing.y = unit(0.01, 'mm'),       # Make legend closer
@@ -85,22 +88,34 @@ theme_update(
 )
 ```
 
-```{r visulalisation}
-# Plot
-plot_one <- penguins %>% 
+```{r visualisation}
+# Scatter plot
+scatter_plot <- penguins %>% 
   ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
-  geom_jitter(aes(colour = species), alpha = 0.20, size = 2.5) +
-  geom_smooth(aes(colour = species), method = "lm", formula = y ~ x, se = FALSE) +
-  scale_colour_manual(values = colours) +
-  coord_fixed(ratio = 1.4) +
-  labs(x = "\nFlipper length (mm)",
-       y = "Bill length (mm)\n",
-       title = "\nFlipper and bill length",
-       subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo penguins\n")
+    geom_jitter(aes(colour = species), alpha = 0.20, size = 2.5) +
+    geom_smooth(aes(colour = species), method = "lm", formula = y ~ x, se = FALSE) +
+    scale_colour_manual(values = colours_penguins) +
+    coord_fixed(ratio = 1.4) +
+    labs(x = "\nFlipper length (mm)\n",
+         y = "Bill length (mm)\n",
+         title = "\nFlipper and bill length",
+         subtitle = "for Adelie, Chinstrap, and Gentoo penguins\n")
 
 # Add density plots corresponding to each axis
-ggMarginal(plot_one, type = "density", margins = "both",
+ggMarginal(scatter_plot, type = "density", margins = "both",
            size = 8, groupFill = TRUE, colour = "transparent", alpha = 0.25)
+
+# Beeswarm plot
+penguins %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm)) +
+    geom_beeswarm(aes(colour = species), size = 1.8, dodge.width = 0.7, alpha = 0.3) +
+    scale_colour_manual(values = colours_penguins) +
+    coord_fixed(ratio = 0.03) +
+    theme(panel.grid.major.x = element_blank()) +
+    labs(x = "Sex\n",
+         y = "Flipper length (mm)\n",
+         title = "\nFlipper length by sex and species",
+         subtitle = "for Adelie, Chinstrap, and Gentoo penguins\n")
 ```
 
 ## Appendix
