@@ -107,7 +107,7 @@ plot_one <- penguins %>%
   coord_fixed(ratio = 1.4) +
   labs(x = "\nFlipper length (mm)",
        y = "Bill length (mm)\n",
-       title = "Flipper and bill length",
+       title = "\nFlipper and bill length",
        subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo penguins\n")
 
 # Add density plots corresponding to each axis
