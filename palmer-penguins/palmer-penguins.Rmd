@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ![palmer penguins](palmer-penguins.png)
+
 <div style = "text-align: right"> Artwork by [Allison Horst](https://www.allisonhorst.com) </div>
 
 ## Preface
@@ -49,6 +50,7 @@ penguins <- penguins %>%               # Read in the data
 ```
 
 ![culmen depth](culmen_depth.png)
+
 <div style = "text-align: right"> Artwork by [Allison Horst](https://www.allisonhorst.com) </div>
 
 ```{r glimpse}
