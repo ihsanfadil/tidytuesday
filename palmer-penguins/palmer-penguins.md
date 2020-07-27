@@ -21,8 +21,6 @@ I wanted to familiarise myself with the dataset as well for future
 teaching on data analysis and visualisation with R. Much more
 importantly, these penguins are so adorable\! 🐧
 
-Let’s get started.
-
 ``` r
 # Setup
 library(palmerpenguins) # Data source
@@ -73,8 +71,13 @@ glimpse(penguins)
 
 ## Visualisation
 
-First off, I am going to reproduce the first plot shown on the
-`palmerpenguins` site, with little modification.
+Firstly, I am going to reproduce the first plot illustrated on the
+`palmerpenguins` site, with slight modification. This is basically a
+scatter plot overlaid by ordinary-least-squares regression lines across
+species.
+
+The second plot depicts the distributions of flipper length by sex and
+species using a beeswarm plot.
 
 ``` r
 # Set plots to some formatting
