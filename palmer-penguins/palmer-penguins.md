@@ -120,10 +120,15 @@ ggMarginal(scatter_plot, type = "density", margins = "both",
 
 <img src="palmer-penguins_files/figure-gfm/scatter-plot-1.png" style="display: block; margin: auto;" />
 
+Penguins with longer flippers tended to have a longer bill, irrespective
+of the species.
+
+-----
+
 The second plot depicts the distributions of flipper length by sex and
-species through a beeswarm plot. Relatively few data points in each
-category due to stratification allow me to make use of this
-pretty-looking plot, which also shows individual observations.
+species using a beeswarm plot. Relatively few data points in each
+category due to stratification allow to make use of this pretty-looking
+plot, which also shows individual observations.
 
 ``` r
 # Beeswarm plot
@@ -140,6 +145,9 @@ penguins %>%
 ```
 
 <img src="palmer-penguins_files/figure-gfm/beeswarm-plot-1.png" style="display: block; margin: auto;" />
+
+On average, male penguins had longer flippers than females did. Also,
+Gentoo penguins had the longest flippers than the other two species.
 
 ## Appendix
 
