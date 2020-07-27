@@ -60,10 +60,6 @@ glimpse(penguins)
 
 ## Visualisation
 
-Firstly, I am going to reproduce the first plot illustrated on the `palmerpenguins` site, with slight modification. This is basically a scatter plot overlaid by ordinary-least-squares regression lines across species.
-
-The second plot depicts the distributions of flipper length by sex and species using a beeswarm plot.
-
 ```{r plot-setup}
 # Set plots to some formatting
 
@@ -88,7 +84,9 @@ theme_update(
 )
 ```
 
-```{r visualisation}
+Firstly, I am going to reproduce the first plot illustrated on the `palmerpenguins` site, with slight modification. This is basically a scatter plot overlaid by ordinary-least-squares regression lines across species.
+
+```{r scatter-plot}
 # Scatter plot
 scatter_plot <- penguins %>% 
   ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
@@ -104,7 +102,11 @@ scatter_plot <- penguins %>%
 # Add density plots corresponding to each axis
 ggMarginal(scatter_plot, type = "density", margins = "both",
            size = 8, groupFill = TRUE, colour = "transparent", alpha = 0.25)
+```
 
+The second plot depicts the distributions of flipper length by sex and species through a beeswarm plot. Relatively few data points in each category due to stratification allow me to make use of this pretty-looking plot, which also shows individual observations.
+
+```{r beeswarm-plot}
 # Beeswarm plot
 penguins %>% 
   ggplot(aes(x = sex, y = flipper_length_mm)) +

@@ -71,14 +71,6 @@ glimpse(penguins)
 
 ## Visualisation
 
-Firstly, I am going to reproduce the first plot illustrated on the
-`palmerpenguins` site, with slight modification. This is basically a
-scatter plot overlaid by ordinary-least-squares regression lines across
-species.
-
-The second plot depicts the distributions of flipper length by sex and
-species using a beeswarm plot.
-
 ``` r
 # Set plots to some formatting
 
@@ -103,6 +95,11 @@ theme_update(
 )
 ```
 
+Firstly, I am going to reproduce the first plot illustrated on the
+`palmerpenguins` site, with slight modification. This is basically a
+scatter plot overlaid by ordinary-least-squares regression lines across
+species.
+
 ``` r
 # Scatter plot
 scatter_plot <- penguins %>% 
@@ -121,7 +118,12 @@ ggMarginal(scatter_plot, type = "density", margins = "both",
            size = 8, groupFill = TRUE, colour = "transparent", alpha = 0.25)
 ```
 
-<img src="palmer-penguins_files/figure-gfm/visualisation-1.png" style="display: block; margin: auto;" />
+<img src="palmer-penguins_files/figure-gfm/scatter-plot-1.png" style="display: block; margin: auto;" />
+
+The second plot depicts the distributions of flipper length by sex and
+species through a beeswarm plot. Relatively few data points in each
+category due to stratification allow me to make use of this
+pretty-looking plot, which also shows individual observations.
 
 ``` r
 # Beeswarm plot
@@ -137,7 +139,7 @@ penguins %>%
          subtitle = "for Adelie, Chinstrap, and Gentoo penguins\n")
 ```
 
-<img src="palmer-penguins_files/figure-gfm/visualisation-2.png" style="display: block; margin: auto;" />
+<img src="palmer-penguins_files/figure-gfm/beeswarm-plot-1.png" style="display: block; margin: auto;" />
 
 ## Appendix
 
