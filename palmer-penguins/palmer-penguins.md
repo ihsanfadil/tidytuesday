@@ -71,12 +71,19 @@ glimpse(penguins)
 
 ## Visualisation
 
+Firstly, I am going to reproduce the first plot illustrated on the
+`palmerpenguins` site, with slight modification. This is basically a
+scatter plot overlaid by ordinary-least-squares regression lines across
+species. Penguins with longer flippers tended to have a longer bill,
+irrespective of the species.
+
 ``` r
 # Set plots to some formatting
 
 ## Colours and theme of my choosing
-colours_penguins <- c("Gentoo" = "#50A3A4", "Chinstrap" = "#F95335", "Adelie" = "#FCAF38")
-colours_sex <- c("Male" = "#50A3A4", "Female" = "#FCAF38")
+colours_penguins <- c("Gentoo" = "#50A3A4",
+                      "Chinstrap" = "#F95335",
+                      "Adelie" = "#FCAF38")
 theme_set(theme_minimal())
 
 ## Further refinement
@@ -95,17 +102,14 @@ theme_update(
 )
 ```
 
-Firstly, I am going to reproduce the first plot illustrated on the
-`palmerpenguins` site, with slight modification. This is basically a
-scatter plot overlaid by ordinary-least-squares regression lines across
-species.
-
 ``` r
 # Scatter plot
 scatter_plot <- penguins %>% 
   ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
-    geom_jitter(aes(colour = species), alpha = 0.20, size = 2.5) +
-    geom_smooth(aes(colour = species), method = "lm", formula = y ~ x, se = FALSE) +
+    geom_jitter(aes(colour = species),
+                alpha = 0.20, size = 2.5) +
+    geom_smooth(aes(colour = species),
+                method = "lm", formula = y ~ x, se = FALSE) +
     scale_colour_manual(values = colours_penguins) +
     coord_fixed(ratio = 1.4) +
     labs(x = "\nFlipper length (mm)\n",
@@ -120,21 +124,19 @@ ggMarginal(scatter_plot, type = "density", margins = "both",
 
 <img src="palmer-penguins_files/figure-gfm/scatter-plot-1.png" style="display: block; margin: auto;" />
 
-Penguins with longer flippers tended to have a longer bill, irrespective
-of the species.
-
------
-
 The second plot depicts the distributions of flipper length by sex and
 species using a beeswarm plot. Relatively few data points in each
 category due to stratification allow to make use of this pretty-looking
-plot, which also shows individual observations.
+plot, which also shows individual observations. On average, male
+penguins had longer flippers than females did. Also, Gentoo penguins had
+the longest flippers than the other two species.
 
 ``` r
 # Beeswarm plot
 penguins %>% 
   ggplot(aes(x = sex, y = flipper_length_mm)) +
-    geom_beeswarm(aes(colour = species), size = 1.8, dodge.width = 0.7, alpha = 0.3) +
+    geom_beeswarm(aes(colour = species),
+                  size = 1.8, dodge.width = 0.7, alpha = 0.3) +
     scale_colour_manual(values = colours_penguins) +
     coord_fixed(ratio = 0.03) +
     theme(panel.grid.major.x = element_blank()) +
@@ -145,9 +147,6 @@ penguins %>%
 ```
 
 <img src="palmer-penguins_files/figure-gfm/beeswarm-plot-1.png" style="display: block; margin: auto;" />
-
-On average, male penguins had longer flippers than females did. Also,
-Gentoo penguins had the longest flippers than the other two species.
 
 ## Appendix
 
