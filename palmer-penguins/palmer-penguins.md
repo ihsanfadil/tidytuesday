@@ -127,9 +127,10 @@ ggMarginal(scatter_plot, type = "density", margins = "both",
 The second plot depicts the distributions of flipper length by sex and
 species using a beeswarm plot. Relatively few data points in each
 category due to stratification allow to make use of this pretty-looking
-plot, which also shows individual observations. On average, male
-penguins had longer flippers than females did. Also, Gentoo penguins had
-the longest flippers than the other two species.
+plot, which also shows individual observations.
+
+On average, male penguins had longer flippers than females did. Gentoo
+penguins had the longest flippers than the other two species.
 
 ``` r
 # Beeswarm plot
