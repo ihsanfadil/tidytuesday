@@ -37,7 +37,7 @@ the raw data, `penguins`.
 ``` r
 # Dataset
 penguins <- penguins %>%               # Read in the data
-  na.omit() %>%                        # Complete-case analysis
+  drop_na(sex) %>%                     # Remove missing data in sex
   mutate(species = as_factor(species), # Modify variables
          island = as_factor(island),
          sex = as_factor(sex),
